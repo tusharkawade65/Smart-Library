@@ -1,0 +1,107 @@
+create table student_department(department_id int primary key AUTO_INCREMENT,department_name varchar(30) unique NOT NULL);
+
+
+
+create table class(class_id int primary key AUTO_INCREMENT,class_name varchar(30) unique NOT NULL,department_id int references student_department(department_id) on delete cascade);
+
+
+
+create table student(student_barcode int primary key AUTO_INCREMENT,student_register_number int unique NOT NULL,student_name varchar(30) NOT NULL,student_address varchar(30) NOT NULL,student_contact varchar(10) unique NOT NULL,student_mail varchar(40) unique NOT NULL,class_id int references student_class(class_id) on delete cascade);
+
+
+create table book_title(book_title_id int primary key AUTO_INCREMENT,book_title varchar(70));
+
+
+create table book_author(b_author_id int primary key AUTO_INCREMENT,b_author_name varchar(70));
+
+
+
+create table book_publication(b_publication_id int primary key AUTO_INCREMENT,b_publication_name varchar(70));
+
+
+
+create table book_edition(b_edition_id int primary key AUTO_INCREMENT,b_edition varchar(70),b_edition_year varchar(4));
+
+
+
+create table book_position(b_position_id int primary key AUTO_INCREMENT,rack_no int,row_no int);
+
+
+
+
+create table book(b_barcode int primary key,book_title_id int references book_title(book_title_id) on delete cascade,b_author_id int references book_author(b_author_id) on delete cascade,b_publication_id int references book_publication(b_publication_id) on delete cascade, b_edition_id int references book_edition(b_edition_id) on delete cascade, b_position_id int references book_position(b_position_id) on delete cascade, book_price float,no_of_copies int);
+
+
+
+
+
+
+
+create table book_issue(issue_id int primary key AUTO_INCREMENT,b_barcode int references book(b_barcode) on delete cascade,student_barcode int references student(student_barcode) on delete cascade,issue_date date);
+
+
+
+
+create table book_return(return_id int primary key AUTO_INCREMENT,b_barcode int references book(b_barcode) on delete cascade,student_barcode int references student(student_barcode) on delete cascade,return_date date);
+
+
+create table avl(book_name varchar(70),total_copies int ,issue_copies int);
+
+
+create table temp_date(tempdate date);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

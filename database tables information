@@ -1,0 +1,167 @@
+mysql> show tables;
++--------------------+
+| Tables_in_project  |
++--------------------+
+| avl                |
+| book               |
+| book_author        |
+| book_edition       |
+| book_issue         |
+| book_position      |
+| book_publication   |
+| book_return        |
+| book_title         |
+| class              |
+| librarian_login    |
+| student            |
+| student_department |
+| temp_date          |
++--------------------+
+14 rows in set (0.00 sec)
+
+mysql> describe avl;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| book_name    | varchar(70) | YES  |     | NULL    |       |
+| total_copies | int(11)     | YES  |     | NULL    |       |
+| issue_copies | int(11)     | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.10 sec)
+
+mysql> describe book;
++------------------+---------+------+-----+---------+-------+
+| Field            | Type    | Null | Key | Default | Extra |
++------------------+---------+------+-----+---------+-------+
+| b_barcode        | int(11) | NO   | PRI |         |       |
+| book_title_id    | int(11) | YES  |     | NULL    |       |
+| b_author_id      | int(11) | YES  |     | NULL    |       |
+| b_publication_id | int(11) | YES  |     | NULL    |       |
+| b_edition_id     | int(11) | YES  |     | NULL    |       |
+| b_position_id    | int(11) | YES  |     | NULL    |       |
+| book_price       | int(11) | YES  |     | NULL    |       |
+| no_of_copies     | int(11) | YES  |     | NULL    |       |
++------------------+---------+------+-----+---------+-------+
+8 rows in set (0.02 sec)
+
+mysql> describe book_author;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| b_author_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| b_author_name | varchar(70) | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.03 sec)
+
+mysql> describe book_edition;
++----------------+-------------+------+-----+---------+----------------+
+| Field          | Type        | Null | Key | Default | Extra          |
++----------------+-------------+------+-----+---------+----------------+
+| b_edition_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| b_edition      | varchar(70) | YES  |     | NULL    |                |
+| b_edition_year | varchar(4)  | YES  |     | NULL    |                |
++----------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.02 sec)
+
+mysql> describe book_issue;
++-----------------+---------+------+-----+---------+----------------+
+| Field           | Type    | Null | Key | Default | Extra          |
++-----------------+---------+------+-----+---------+----------------+
+| issue_id        | int(11) | NO   | PRI | NULL    | auto_increment |
+| b_barcode       | int(11) | YES  |     | NULL    |                |
+| student_barcode | int(11) | YES  |     | NULL    |                |
+| issue_date      | date    | YES  |     | NULL    |                |
++-----------------+---------+------+-----+---------+----------------+
+4 rows in set (0.02 sec)
+
+mysql> describe book_position;
++---------------+---------+------+-----+---------+----------------+
+| Field         | Type    | Null | Key | Default | Extra          |
++---------------+---------+------+-----+---------+----------------+
+| b_position_id | int(11) | NO   | PRI | NULL    | auto_increment |
+| rack_no       | int(11) | YES  |     | NULL    |                |
+| row_no        | int(11) | YES  |     | NULL    |                |
++---------------+---------+------+-----+---------+----------------+
+3 rows in set (0.06 sec)
+
+mysql> describe book_publication;
++--------------------+-------------+------+-----+---------+----------------+
+| Field              | Type        | Null | Key | Default | Extra          |
++--------------------+-------------+------+-----+---------+----------------+
+| b_publication_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| b_publication_name | varchar(70) | YES  |     | NULL    |                |
++--------------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.02 sec)
+
+mysql> describe book_return;
++-----------------+---------+------+-----+---------+----------------+
+| Field           | Type    | Null | Key | Default | Extra          |
++-----------------+---------+------+-----+---------+----------------+
+| book_return_id  | int(11) | NO   | PRI | NULL    | auto_increment |
+| b_barcode       | int(11) | YES  |     | NULL    |                |
+| student_barcode | int(11) | YES  |     | NULL    |                |
+| return_date     | date    | YES  |     | NULL    |                |
++-----------------+---------+------+-----+---------+----------------+
+4 rows in set (0.05 sec)
+
+mysql> describe book_title;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| book_title_id | int(11)     | NO   | PRI | NULL    | auto_increment |
+| book_title    | varchar(70) | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.01 sec)
+
+mysql> describe class;
++---------------+-------------+------+-----+---------+----------------+
+| Field         | Type        | Null | Key | Default | Extra          |
++---------------+-------------+------+-----+---------+----------------+
+| class_id      | int(11)     | NO   | PRI | NULL    | auto_increment |
+| class_name    | varchar(20) | YES  |     | NULL    |                |
+| department_id | int(11)     | YES  |     | NULL    |                |
++---------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.03 sec)
+
+mysql> describe librarian_login;
++--------------------+-------------+------+-----+---------+----------------+
+| Field              | Type        | Null | Key | Default | Extra          |
++--------------------+-------------+------+-----+---------+----------------+
+| librarian_id       | int(11)     | NO   | PRI | NULL    | auto_increment |
+| librarian_username | varchar(30) | YES  | UNI | NULL    |                |
+| librarian_password | varchar(8)  | YES  |     | NULL    |                |
++--------------------+-------------+------+-----+---------+----------------+
+3 rows in set (0.01 sec)
+
+mysql> describe student;
++-------------------------+-------------+------+-----+---------+-------+
+| Field                   | Type        | Null | Key | Default | Extra |
++-------------------------+-------------+------+-----+---------+-------+
+| student_barcode         | int(11)     | NO   | PRI |         |       |
+| student_register_number | int(11)     | YES  | UNI | NULL    |       |
+| student_name            | varchar(70) | YES  |     | NULL    |       |
+| student_address         | varchar(70) | YES  |     | NULL    |       |
+| student_contact         | varchar(10) | YES  | UNI | NULL    |       |
+| student_mail            | varchar(40) | YES  | UNI | NULL    |       |
+| class_id                | int(11)     | YES  |     | NULL    |       |
++-------------------------+-------------+------+-----+---------+-------+
+7 rows in set (0.02 sec)
+
+mysql> describe student_department;
++-----------------+-------------+------+-----+---------+----------------+
+| Field           | Type        | Null | Key | Default | Extra          |
++-----------------+-------------+------+-----+---------+----------------+
+| department_id   | int(11)     | NO   | PRI | NULL    | auto_increment |
+| department_name | varchar(30) | YES  |     | NULL    |                |
++-----------------+-------------+------+-----+---------+----------------+
+2 rows in set (0.02 sec)
+
+mysql> describe temp_date;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| tempdate | date | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+1 row in set (0.06 sec)
+
+mysql>
